@@ -1,5 +1,5 @@
 import socket
-import statistics
+
 HOST = ''              # Endereco IP do Servidor
 PORT = 5000            # Porta que o Servidor esta
 tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -26,16 +26,10 @@ con, cliente = tcp.accept()
 print ('Conectado por', cliente)
 while True:
     word = str(con.recv(1024).decode())
+    if (word == "0"):
+        con.close()
+        break
     otherWord = str(con.recv(1024).decode())
     anagramResult = isAnagram(word, otherWord)
     result = bytes(str(anagramResult), 'utf-8')
     con.send(result)
-
-
-{
-    "numeroContrato" : 124,
-    "prestadorId" : 2,
-    "valorContrato" : 170.87,
-    "competenciaInicial" : "2022-11-04"
-    "competenciaFinal": "2022-12-04"
-}

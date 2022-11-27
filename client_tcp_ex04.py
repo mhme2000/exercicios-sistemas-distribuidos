@@ -16,7 +16,7 @@ que mais se repete na lista.
     '''
     )
 while opt != 0:
-    for c in range(3): 
+    for c in range(300): 
         msg = input("Digite um valor: ").encode()
         tcp.send (msg)
     resp = (tcp.recv(1024)).decode()
@@ -24,5 +24,7 @@ while opt != 0:
     print(f'A moda da lista de valores é: {resp}')
     opt = int(input("Digite [0] para interromper a execução do programa ou [1] para continuar: "))
     if(opt == 0):
+        tcp.send(str(opt).encode())
         break
 tcp.close()
+print('Conexão interrompida pelo client!')

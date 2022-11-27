@@ -14,6 +14,7 @@ msgEnum = print(
 ========================================================
     '''
     )
+opt = 1
 while opt != 0:
     for c in range(50): 
         msg = input("Digite um valor: ").encode()
@@ -23,5 +24,7 @@ while opt != 0:
     print(f'O valor que mais se aproxima da média da lista é: {resp}')
     opt = int(input("Digite [0] para interromper a execução do programa ou [1] para continuar: "))
     if(opt == 0):
+        tcp.send(str(opt).encode())
         break
 tcp.close()
+print('Conexão interrompida pelo client!')

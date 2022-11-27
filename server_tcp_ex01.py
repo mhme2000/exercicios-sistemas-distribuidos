@@ -22,7 +22,12 @@ while True:
     list.clear()
     for c in range(50):
         value = int(con.recv(1024))
+        if (value == 0):
+            con.close()
+            break
         list.append(value)
+    if (value == 0):
+        break
     averageList = average(list)
     mean = meanValue(list, averageList)
     result = bytes(str(mean), 'utf-8')

@@ -13,9 +13,14 @@ con, cliente = tcp.accept()
 print ('Conectado por', cliente)
 while True:
     list.clear()
-    for c in range(3):
+    for c in range(300):
         value = int(con.recv(1024))
+        if (value == 0):
+            con.close()
+            break
         list.append(value)
+    if (value == 0):
+        break
     modeList = mode(list)
     result = bytes(str(modeList), 'utf-8')
     con.send(result)

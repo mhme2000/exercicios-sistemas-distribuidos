@@ -26,5 +26,7 @@ while opt != 0:
         print('As palavras NÃO são anagramas.')
     opt = int(input("Digite [0] para interromper a execução do programa ou [1] para continuar: "))
     if(opt == 0):
+        tcp.send(str(opt).encode())
         break
 tcp.close()
+print('Conexão interrompida pelo client!')
